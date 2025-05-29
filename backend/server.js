@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 
 const pool = new Pool({
-  connectionString: process.env.SUPABASE_DB_URL // oppure incolla qui la tua connection string
+  connectionString: process.env.SUPABASE_DB_URL,
+  ssl: { rejectUnauthorized: false }
 });
 
 const app = express();
