@@ -16,6 +16,7 @@ document.getElementById("page-container").innerHTML = `
     <button id="elimina-btn">Elimina selezionato</button>
 </div>
 `;
+const API_URL = "https://mercatino-libri.onrender.com"; // DICHIARA FUORI DALLE FUNZIONI
 
 // Funzione per caricare e mostrare i clienti da localStorage
 async function loadClienti() {
@@ -37,8 +38,6 @@ async function loadClienti() {
     container.innerHTML = tableHTML;
 
     const tbody = document.getElementById("movimenti-table-body");
-    // --- Cambia qui: prendi i clienti dal server ---
-    const API_URL = "https://mercatino-libri.onrender.com";
     const response = await fetch(`${API_URL}/api/clienti`);
     const clienti = await response.json();
 
@@ -46,7 +45,7 @@ async function loadClienti() {
         const tr = document.createElement("tr");
         tr.classList.add("cliente-row");
         tr.setAttribute("data-id", cliente.idCliente);
-    
+
         tr.innerHTML = `
             <td>${cliente.name}</td>
             <td>${cliente.surname}</td>
@@ -54,7 +53,7 @@ async function loadClienti() {
             <td>${cliente.phoneNumb}</td>
             <td>${cliente.saldo}</td>
         `;
-    
+
         tr.addEventListener("click", async function(e) {
             // Se già selezionato, chiudi la tendina
             if (tr.classList.contains("selected")) {
@@ -68,27 +67,11 @@ async function loadClienti() {
             tr.classList.add("selected");
             await mostraMovimentiCliente(cliente.idCliente, tr);
         });
-    
+
         tbody.appendChild(tr);
     });
 
-    async function eliminaSelezionati() {
-        const selected = document.querySelector(".cliente-row.selected");
-        if (!selected) {
-            alert("Seleziona una riga da eliminare.");
-            return;
-        }
-        const id = selected.getAttribute("data-id");
-        const API_URL = "https://mercatino-libri.onrender.com";
-        if (confirm("Sei sicuro di voler eliminare questo cliente?")) {
-            await fetch(`${API_URL}/api/clienti/${id}`, { method: "DELETE" });
-            // Aggiorna la tabella dopo l'eliminazione
-            await loadClienti();
-            alert("Cliente eliminato con successo.");
-        }
-    }
-    
-    // Dopo aver creato la tabella in loadClienti, collega il bottone:
+    // Collega il bottone elimina
     document.getElementById("elimina-btn").onclick = eliminaSelezionati;
 }
 async function mostraMovimentiCliente(idCliente, tr) {
@@ -157,6 +140,19 @@ function search(event) {
         });
         row.style.display = match ? "" : "none";
     });
+}
+async function eliminaSelezionati() {
+    const selected = document.querySelector(".cliente-row.selected");
+    if (!selected) {
+        alert("Seleziona una riga da eliminare.");
+        return;
+    }
+    const id = selected.getAttribute("data-id");
+    if (confirm("Sei sicuro di voler eliminare questo cliente?")) {
+        await fetch(`${API_URL}/api/clienti/${id}`, { method: "DELETE" });
+        await loadClienti(); // aggiorna la tabella
+        alert("Cliente eliminato con successo.");
+    }
 }
 
 window.onload = loadClienti;
