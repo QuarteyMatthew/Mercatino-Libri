@@ -1,30 +1,16 @@
+const { Pool } = require('pg');
 const express = require('express');
-const fs = require('fs');
 const cors = require('cors');
-const path = require('path');
+
+const pool = new Pool({
+  connectionString: process.env.SUPABASE_DB_URL // oppure incolla qui la tua connection string
+});
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const dbPath = process.env.RENDER ? '/tmp/db.json' : path.join(__dirname, 'db.json');
-
-// Se siamo su Render e il file non esiste, copialo dalla versione di default
-if (process.env.RENDER && !fs.existsSync(dbPath)) {
-  fs.copyFileSync(path.join(__dirname, 'db.json'), dbPath);
-}
 
 app.use(cors());
 app.use(express.json());
-
-// Legge il contenuto del db
-function leggiDB() {
-  const raw = fs.readFileSync(dbPath);
-  return JSON.parse(raw);
-}
-
-// Scrive nel db
-function scriviDB(data) {
-  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
-}
 
 // ROUTE BASE
 app.get('/', (req, res) => {
@@ -32,81 +18,66 @@ app.get('/', (req, res) => {
 });
 
 // ✅ OTTIENI TUTTI I LIBRI
-app.get('/api/libri', (req, res) => {
-  const db = leggiDB();
-  res.json(db.libri);
+app.get('/api/libri', async (req, res) => {
+  const result = await pool.query('SELECT * FROM libri');
+  res.json(result.rows);
 });
 
 // ✅ OTTIENI TUTTI I CLIENTI
-app.get('/api/clienti', (req, res) => {
-  const db = leggiDB();
-  res.json(db.clienti);
+app.get('/api/clienti', async (req, res) => {
+  const result = await pool.query('SELECT * FROM clienti');
+  res.json(result.rows);
 });
 
 // ✅ REGISTRA UN NUOVO LIBRO
-app.post('/api/libri', (req, res) => {
-  const nuovoLibro = req.body;
+app.post('/api/libri', async (req, res) => {
+  const {
+    idLibro, materia, codice, autore, titolo, numeroSerie,
+    prezzo, percentualeDiRivendita, id, proprietario, acquirente
+  } = req.body;
 
-  if (!nuovoLibro || !nuovoLibro.idLibro || !nuovoLibro.titolo) {
-    return res.status(400).json({ errore: 'Dati del libro incompleti' });
-  }
-
-  const db = leggiDB();
-  const esiste = db.libri.some(libro => libro.idLibro === nuovoLibro.idLibro);
-
-  if (esiste) {
-    return res.status(409).json({ errore: 'Libro già registrato' });
-  }
-
-  db.libri.push(nuovoLibro);
-  scriviDB(db);
-
-  res.status(201).json({ messaggio: 'Libro registrato con successo', libro: nuovoLibro });
+  await pool.query(
+    `INSERT INTO libri
+      (idLibro, materia, codice, autore, titolo, numeroSerie, prezzo, percentualeDiRivendita, id, proprietario, acquirente)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+    [
+      idLibro, materia, codice, autore, titolo, numeroSerie,
+      prezzo, percentualeDiRivendita, id,
+      proprietario ? JSON.stringify(proprietario) : null,
+      acquirente ? JSON.stringify(acquirente) : null
+    ]
+  );
+  res.status(201).json({ messaggio: 'Libro registrato con successo' });
 });
 
 // ✅ REGISTRA UN NUOVO CLIENTE
-app.post('/api/clienti', (req, res) => {
-  const nuovoCliente = req.body;
+app.post('/api/clienti', async (req, res) => {
+  const { idCliente, name, surname, phoneNumb, email, saldo } = req.body;
 
-  if (!nuovoCliente || !nuovoCliente.idCliente || !nuovoCliente.name) {
-    return res.status(400).json({ errore: 'Dati del cliente incompleti' });
-  }
-
-  const db = leggiDB();
-  const esiste = db.clienti.some(c => c.idCliente === nuovoCliente.idCliente);
-
-  if (esiste) {
-    return res.status(409).json({ errore: 'Cliente già registrato' });
-  }
-
-  db.clienti.push(nuovoCliente);
-  scriviDB(db);
-
-  res.status(201).json({ messaggio: 'Cliente registrato con successo', cliente: nuovoCliente });
+  await pool.query(
+    `INSERT INTO clienti (idCliente, name, surname, phoneNumb, email, saldo)
+     VALUES ($1, $2, $3, $4, $5, $6)`,
+    [idCliente, name, surname, phoneNumb, email, saldo]
+  );
+  res.status(201).json({ messaggio: 'Cliente registrato con successo' });
 });
-// ✅ ELIMINA UN CLIENTE E AGGIORNA I LIBRI ASSOCIATI
-app.delete('/api/clienti/:id', (req, res) => {
+
+// ✅ ELIMINA UN CLIENTE
+app.delete('/api/clienti/:id', async (req, res) => {
   const id = req.params.id;
-  const db = leggiDB();
 
-  // Rimuovi il cliente dalla lista
-  const clientiFiltrati = db.clienti.filter(c => c.idCliente !== id);
+  // Elimina il cliente
+  await pool.query('DELETE FROM clienti WHERE idCliente = $1', [id]);
 
-  // Aggiorna i libri: se il proprietario o acquirente è il cliente eliminato, azzera i riferimenti
-  db.libri = db.libri.map(libro => {
-    // Rimuovi proprietario se corrisponde
-    if (libro.proprietario && libro.proprietario.idCliente === id) {
-      libro.proprietario = { idCliente: "", saldo: 0 };
-    }
-    // Rimuovi acquirente se corrisponde
-    if (libro.acquirente && libro.acquirente.idCliente === id) {
-      libro.acquirente = { idCliente: "", saldo: 0 };
-    }
-    return libro;
-  });
-
-  db.clienti = clientiFiltrati;
-  scriviDB(db);
+  // Aggiorna i libri: azzera i riferimenti a quel cliente
+  await pool.query(
+    `UPDATE libri SET proprietario = proprietario - 'idCliente'
+     WHERE proprietario->>'idCliente' = $1`, [id]
+  );
+  await pool.query(
+    `UPDATE libri SET acquirente = acquirente - 'idCliente'
+     WHERE acquirente->>'idCliente' = $1`, [id]
+  );
 
   res.json({ messaggio: 'Cliente eliminato e libri aggiornati' });
 });

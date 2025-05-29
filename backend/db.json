@@ -649,3 +649,6 @@
     }
   ]
 }
+
+//postgresql://postgres:[06MattQuart!]@db.lxlfalevqyziclfmjknn.supabase.co:5432/postgres
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4bGZhbGV2cXl6aWNsZm1qa25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDY0ODQsImV4cCI6MjA2NDEyMjQ4NH0.wY577AL2HnF6Y3sl9FBjjTUAaR2cSR9KxAl3c4-8UXg
