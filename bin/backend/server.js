@@ -1,60 +1,86 @@
 const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
+const path = require('path');
+
 const app = express();
-const PORT = 3000;
-const DB_FILE = 'db.json';
+const PORT = process.env.PORT || 3000;
+const dbPath = path.join(__dirname, 'db.json');
 
 app.use(cors());
 app.use(express.json());
 
-function readDB() {
-    if (!fs.existsSync(DB_FILE)) {
-        fs.writeFileSync(DB_FILE, JSON.stringify({ libri: [], clienti: [] }, null, 2));
-    }
-    return JSON.parse(fs.readFileSync(DB_FILE));
+// Legge il contenuto del db
+function leggiDB() {
+  const raw = fs.readFileSync(dbPath);
+  return JSON.parse(raw);
 }
 
-function writeDB(data) {
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
+// Scrive nel db
+function scriviDB(data) {
+  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 }
 
-// --- LIBRI ---
-app.get('/libri', (req, res) => {
-    const db = readDB();
-    res.json(db.libri);
-});
-app.post('/libri', (req, res) => {
-    const db = readDB();
-    db.libri.push(req.body);
-    writeDB(db);
-    res.status(201).json(req.body);
-});
-app.delete('/libri/:id', (req, res) => {
-    const db = readDB();
-    db.libri = db.libri.filter(libro => libro.id !== req.params.id);
-    writeDB(db);
-    res.sendStatus(200);
+// ROUTE BASE
+app.get('/', (req, res) => {
+  res.send('📚 API Server Online - Libri e Clienti');
 });
 
-// --- CLIENTI ---
-app.get('/clienti', (req, res) => {
-    const db = readDB();
-    res.json(db.clienti);
-});
-app.post('/clienti', (req, res) => {
-    const db = readDB();
-    db.clienti.push(req.body);
-    writeDB(db);
-    res.status(201).json(req.body);
-});
-app.delete('/clienti/:id', (req, res) => {
-    const db = readDB();
-    db.clienti = db.clienti.filter(cliente => cliente.idCliente !== req.params.id);
-    writeDB(db);
-    res.sendStatus(200);
+// ✅ OTTIENI TUTTI I LIBRI
+app.get('/api/libri', (req, res) => {
+  const db = leggiDB();
+  res.json(db.libri);
 });
 
+// ✅ OTTIENI TUTTI I CLIENTI
+app.get('/api/clienti', (req, res) => {
+  const db = leggiDB();
+  res.json(db.clienti);
+});
+
+// ✅ REGISTRA UN NUOVO LIBRO
+app.post('/api/libri', (req, res) => {
+  const nuovoLibro = req.body;
+
+  if (!nuovoLibro || !nuovoLibro.idLibro || !nuovoLibro.titolo) {
+    return res.status(400).json({ errore: 'Dati del libro incompleti' });
+  }
+
+  const db = leggiDB();
+  const esiste = db.libri.some(libro => libro.idLibro === nuovoLibro.idLibro);
+
+  if (esiste) {
+    return res.status(409).json({ errore: 'Libro già registrato' });
+  }
+
+  db.libri.push(nuovoLibro);
+  scriviDB(db);
+
+  res.status(201).json({ messaggio: 'Libro registrato con successo', libro: nuovoLibro });
+});
+
+// ✅ REGISTRA UN NUOVO CLIENTE
+app.post('/api/clienti', (req, res) => {
+  const nuovoCliente = req.body;
+
+  if (!nuovoCliente || !nuovoCliente.idCliente || !nuovoCliente.name) {
+    return res.status(400).json({ errore: 'Dati del cliente incompleti' });
+  }
+
+  const db = leggiDB();
+  const esiste = db.clienti.some(c => c.idCliente === nuovoCliente.idCliente);
+
+  if (esiste) {
+    return res.status(409).json({ errore: 'Cliente già registrato' });
+  }
+
+  db.clienti.push(nuovoCliente);
+  scriviDB(db);
+
+  res.status(201).json({ messaggio: 'Cliente registrato con successo', cliente: nuovoCliente });
+});
+
+// AVVIO SERVER
 app.listen(PORT, () => {
-    console.log(`Server avviato su http://localhost:${PORT}`);
+  console.log(`🚀 Server online su http://localhost:${PORT}`);
 });
