@@ -7,6 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const dbPath = process.env.RENDER ? '/tmp/db.json' : path.join(__dirname, 'db.json');
 
+// Se siamo su Render e il file non esiste, copialo dalla versione di default
+if (process.env.RENDER && !fs.existsSync(dbPath)) {
+  fs.copyFileSync(path.join(__dirname, 'db.json'), dbPath);
+}
+
 app.use(cors());
 app.use(express.json());
 
