@@ -1,0 +1,651 @@
+{
+  "libri": [
+    {
+      "materia": "STORIA",
+      "codice": "9788805076659",
+      "autore": "FELTRI FRANCESCO MARIA- BERTAZZONI MARIA MANUELA- NERI FRANCA",
+      "titolo": "SCENARI 3 NOVECENTO E XXI SECOLO",
+      "proprietario": {
+        "name": "sdad",
+        "surname": "asda",
+        "phoneNumb": "1234556789",
+        "email": "das34@gmail.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 35.6,
+      "percentualeDiRivendita": 0,
+      "id": "001",
+      "idLibro": "001001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "masda",
+        "surname": "asadsa",
+        "phoneNumb": "3888955650",
+        "email": "madadjo@gmail.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "masda",
+        "surname": "asadsa",
+        "phoneNumb": "3888955650",
+        "email": "madadjo@gmail.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "STORIA",
+      "codice": "9788805076659",
+      "autore": "FELTRI FRANCESCO MARIA- BERTAZZONI MARIA MANUELA- NERI FRANCA",
+      "titolo": "SCENARI 3 NOVECENTO E XXI SECOLO",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 35.6,
+      "percentualeDiRivendita": 0,
+      "id": "001",
+      "idLibro": "001001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "TECNOLOGIE E PROGETTAZIONE",
+      "codice": "9788823357150",
+      "autore": "BOVE ENEA- PORTALURI GIORGIO",
+      "titolo": "TECNOLOGIE E PROGETTAZIONE DI SISTEMI ELETTRICI ED ELETTRONICI - LIBRO MISTO  ART. ELETTRONICA - VOL. 1 + HUB YOUNG + HUB KIT",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 37,
+      "percentualeDiRivendita": 0,
+      "id": "016",
+      "idLibro": "016001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808834997",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI - VOL 3 + RISORSE SCUOLABOOK PER TELECOM. RETI- SIST. E APP. TELECOMUNICAZIONI DIGITALI DI N. GENERAZIONE",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 44.6,
+      "percentualeDiRivendita": 0,
+      "id": "006",
+      "idLibro": "006001"
+    },
+    {
+      "materia": "SCIENZE DELLA TERRA",
+      "codice": "9788808690913",
+      "autore": "LUPIA PALMIERI ELVIDIO- PAROTTO MAURIZIO",
+      "titolo": "SCIENZE DELLA TERRA 4ED. - VOL. U (LDM)",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 23.9,
+      "percentualeDiRivendita": 0,
+      "id": "005",
+      "idLibro": "005001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "STORIA",
+      "codice": "9788822197320",
+      "autore": "BRANCATI ANTONIO- PAGLIARANI TREBI",
+      "titolo": "STORIA IN MOVIMENTO LIBRO MISTO CON LIBRO DIGITALE  VOLUME 3- LAVORARE CON LA STORIA 3",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.7,
+      "percentualeDiRivendita": 0,
+      "id": "012",
+      "idLibro": "012001"
+    },
+    {
+      "materia": "ELETTROTECNICA ED ELETTRONICA",
+      "codice": "9788823342002",
+      "autore": "AMBROSINI- SPADARI",
+      "titolo": "ELETTROTECNICA ED ELETTRONICA 2 CON OPENBOOK VOLUME 2 + OPENBOOK",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "013",
+      "idLibro": "013001"
+    },
+    {
+      "materia": "SCIENZE INTEGRATE (SCIENZE DELLA TERRA E BIOLOGIA)",
+      "codice": "9788808554055",
+      "autore": "LUPIA PALMIERI ELVIDIO- PAROTTO MAURIZIO- SARACENI S - STRUMIA G",
+      "titolo": "SCIENZE NATURALI 3ED. - BIOLOGIA (LDM) DI SILVIA SARACENI E GIORGIO STRUMIA",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 22.5,
+      "percentualeDiRivendita": 0,
+      "id": "004",
+      "idLibro": "004001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    },
+    {
+      "materia": "ELETTROTECNICA ED ELETTRONICA",
+      "codice": "9788823342002",
+      "autore": "AMBROSINI- SPADARI",
+      "titolo": "ELETTROTECNICA ED ELETTRONICA 2 CON OPENBOOK VOLUME 2 + OPENBOOK",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "013",
+      "idLibro": "013001"
+    },
+    {
+      "materia": "STORIA",
+      "codice": "9788822197320",
+      "autore": "BRANCATI ANTONIO- PAGLIARANI TREBI",
+      "titolo": "STORIA IN MOVIMENTO LIBRO MISTO CON LIBRO DIGITALE  VOLUME 3- LAVORARE CON LA STORIA 3",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.7,
+      "percentualeDiRivendita": 0,
+      "id": "012",
+      "idLibro": "012001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "STORIA",
+      "codice": "9788805076659",
+      "autore": "FELTRI FRANCESCO MARIA- BERTAZZONI MARIA MANUELA- NERI FRANCA",
+      "titolo": "SCENARI 3 NOVECENTO E XXI SECOLO",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 35.6,
+      "percentualeDiRivendita": 0,
+      "id": "001",
+      "idLibro": "001001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "andrea",
+        "surname": "daldosso",
+        "phoneNumb": "1234560987",
+        "email": "ANDREADL93@GMAIL.COM",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "STORIA",
+      "codice": "9788805076659",
+      "autore": "FELTRI FRANCESCO MARIA- BERTAZZONI MARIA MANUELA- NERI FRANCA",
+      "titolo": "SCENARI 3 NOVECENTO E XXI SECOLO",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "002",
+      "prezzo": 35.6,
+      "percentualeDiRivendita": 0,
+      "id": "001",
+      "idLibro": "001002"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "Christian",
+        "surname": "Tari",
+        "phoneNumb": "1234556789",
+        "email": "das34@bella.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808159304",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 1 (LMS LIBRO MISTO SCARICABILE)  RETI ELETTRICHE. FOND. ELETTRONICA DIGITALE. NOZIONI SIST. TELECOMUNICAZIONI",
+      "proprietario": {
+        "name": "tari",
+        "surname": "christian",
+        "phoneNumb": "1234456678",
+        "email": "mammadu@gmail.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 31.4,
+      "percentualeDiRivendita": 0,
+      "id": "002",
+      "idLibro": "002001"
+    },
+    {
+      "materia": "TELECOMUNICAZIONI",
+      "codice": "9788808228628",
+      "autore": "BERTAZIOLI ONELIO",
+      "titolo": "CORSO DI TELECOMUNICAZIONI 2 (LIBRO MISTO SCARICABILE) MEZZI TRASMISSIVI. ELETTRONICA PER TELECOMUNICAZIONI. RETE TELEFONICA",
+      "proprietario": {
+        "name": "tari",
+        "surname": "christian",
+        "phoneNumb": "1234456678",
+        "email": "mammadu@gmail.com",
+        "idCliente": "0000",
+        "saldo": 0
+      },
+      "acquirente": {
+        "idCliente": "",
+        "saldo": 0
+      },
+      "numeroSerie": "001",
+      "prezzo": 42.7,
+      "percentualeDiRivendita": 0,
+      "id": "003",
+      "idLibro": "003001"
+    }
+  ],
+  "clienti": [
+    {
+      "name": "andrea",
+      "surname": "daldosso",
+      "phoneNumb": "1234560987",
+      "email": "ANDREADL93@GMAIL.COM",
+      "idCliente": "0000",
+      "saldo": 0
+    },
+    {
+      "name": "Christian",
+      "surname": "Tari",
+      "phoneNumb": "1234556789",
+      "email": "das34@bella.com",
+      "idCliente": "0000",
+      "saldo": 0
+    },
+    {
+      "name": "tari",
+      "surname": "christian",
+      "phoneNumb": "1234456678",
+      "email": "mammadu@gmail.com",
+      "idCliente": "0000",
+      "saldo": 0
+    }
+  ]
+}

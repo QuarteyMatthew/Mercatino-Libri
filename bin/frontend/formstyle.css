@@ -1,0 +1,197 @@
+#registration-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 30px; /* Aumenta il padding per un aspetto più spazioso */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: none;
+    width: 40%; /* Riduci la larghezza per un aspetto più compatto */
+    max-width: 500px; /* Limita la larghezza massima */
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
+    display: none; 
+}
+
+#registration-form .registration-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: none;
+}
+
+.registration-form-container {
+    margin: 0 auto;
+}
+
+/* #registration-form .left-search {
+    padding: 20px;
+} */
+
+#registration-form .left-search { 
+    width: 60%;
+}
+
+/* #registration-form .right {
+    width: 40%;
+    border-left: 1px solid #ccc;
+    background: #fafafa;
+} */
+
+#registration-form .title input {
+    background: lightgray;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* Dropdown styling */
+#dropdown-clienti {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: calc(100% - 20px);
+    max-width: 250px; 
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 5px;
+    margin-top: 5px;
+    list-style: none;
+    display: none;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#dropdown-clienti li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.2s ease-in-out;
+}
+
+#dropdown-clienti li:last-child {
+    border-bottom: none;
+}
+
+#dropdown-clienti li:hover {
+    background: #f0f0f0;
+}
+
+/* Buttons */
+#registration-form .buttons {
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#registration-form .buttons a {
+    text-decoration: none;
+    color: white;   
+}
+
+#registration-form .buttons button {
+    background: #4CAF50; /* Colore verde più chiaro */
+    color: white;
+    border: none;
+    padding: 12px; /* Aumenta il padding per pulsanti più grandi */
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px; /* Testo più grande */
+    transition: background 0.3s ease-in-out;
+}
+
+#registration-form .buttons button:hover {
+    background: #45a049; /* Colore verde più scuro al passaggio del mouse */
+}
+
+/* Cart section */
+/* #registration-form .cart {
+    background: lightgray;
+    height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+ */
+
+#registration-form .left-search, #registration-form .left-new {
+    width: 100%;
+    min-height: 300px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#registration-form .left-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#registration-form .left-new {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#registration-form .rowinput{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#registration-form .left-new form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spazio tra gli elementi */
+}
+
+#registration-form .rowinput {
+    display: flex;
+    gap: 15px; /* Spazio tra i campi Nome e Cognome */
+}
+
+#registration-form .rowinput label {
+    flex: 1; /* Assicura che i label abbiano la stessa larghezza */
+    font-weight: bold;
+}
+
+#registration-form .rowinput input {
+    flex: 2; /* Assicura che gli input siano più larghi dei label */
+}
+
+/* Migliora l'aspetto del campo Cellulare */
+#registration-form label[for="cellulare"] {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#registration-form input[name="cellulare"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+

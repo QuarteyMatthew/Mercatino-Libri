@@ -1,0 +1,227 @@
+/* Stile di base (body)*/
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Page Blocker */
+#page-blocker {
+    display:none;
+    position:fixed;
+    z-index:9999;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.4);
+}
+ 
+/* Stile pagina globale */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}   
+
+/* Form funzionalità sopra la tabella e carrello */
+.functionality-container { 
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Stile per il Form delle Funzionalità */
+#functionality-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.search-content {
+    display: flex;
+    gap: 20px;
+}
+
+i {
+    color: #333;
+    width: auto;
+    height: 10%;
+}
+.customer-button a{
+    text-decoration: none;
+    color: #333;
+}
+.customer-button button {
+    background: none;
+    color: #333;
+}
+
+.customer-button button:hover {
+    background-color: #ebebeb;
+}
+
+/* Stile per Tabella e Carrello */
+.table-cart-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: 700px;
+    gap: 20px;
+}
+
+/* Tabella */
+#table-container {
+    flex: 2;
+    margin: 0;
+    overflow-y: scroll;
+    height: 700px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+
+thead {
+    background-color: #4CAF50;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    user-select: none;
+}
+  
+/* Righe alternate per una migliore leggibilità */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+/* Hover sulle Righe della Tabella */
+tr:hover {
+    background-color: rgba(76, 175, 80, 0.5);
+}
+
+tr[data-selected="true"] {
+    background-color: rgba(76, 175, 80, 0.3) !important;
+}
+
+/* Carrello */
+.cart-container {
+    flex: 1;
+    max-width: 400px;
+}
+
+.cart-content {
+    width: 100%;
+    min-height: 700px;
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+    box-sizing: border-box;
+}
+
+.cart-header {
+    text-align: left;
+}
+
+.cart-book-container {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    overflow-y: scroll;
+    margin: 20px 0;
+}
+
+/* Stile per il Form della Registrazione di un venditore */
+.seller-registration-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Assicura che il box della Registrazione sia sopra tutto */
+}
+
+.seller-registration-content {
+    background: white;
+    padding: 20px;
+    margin: 15% auto;
+    width: 50%;
+    max-width: 600px; /* Evita che il box diventi troppo largo */
+    border-radius: 10px;
+}
+  
+/* Stile per il Form della Registrazione */
+#customer-data {
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+/* Stile per gli Input */
+.page-container input[type="text"],
+.page-container input[type="number"],
+.page-container input[type="tel"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+  
+/* Stile per i Bottoni */
+button {
+    user-select: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover sui Bottoni */
+.search-content button:hover, .seller-registration-content button:hover, .cart-book-container button:hover {
+    background-color: #45a049;
+}
+
+/* .customer-button {
+    background-color: #45a049;
+} */
+
+.customer-button button:hover {
+    background-color: #ebebeb;
+}
+  
+.cliente-row.selected {
+    background-color: #b2f7b8 !important;
+}
+.movimenti-row td {
+    background: #e8fbe8;
+    border-top: 2px solid #4CAF50;
+}

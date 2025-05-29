@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.1">
+        <title>Mercatino del Libro</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="formstyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+        <div id="page-blocker"></div>
+
+        <div class="page-container">
+            <!-- Form per la ricerca, vendita e acquisizione dei libri -->
+            <div class="functionality-container">
+                <form id="functionality-form" onsubmit="search(event)">
+                    <div class="search-content">
+                        <input id="searchInput" type="text" placeholder="Cerca un libro...">
+                        <button id="searchButton" type="submit">Cerca</button>
+                    </div>
+                    <div class="customer-button">
+                        <button id="sellers-list-button" type="button" > <a href="lista.html">+ Lista Movimenti</a></button>
+                        <!-- <button id="cart-button" type="button" onclick="openCart()"><i class="fa-solid fa-cart-shopping"></i></button> -->
+                    </div>
+                    <!-- <div class="customer-button">
+                        <button id="bottoneVendita" type="button" onsubmit="openSellerRegistration(event)">Vendi libri</b   utton>
+                        <button id="bottoneRicevi" type="submit" onsubmit="openBuyerRegistration(event)">Acquisisci libri</button>
+                    </div> -->
+                </form>
+            </div>
+
+            <!-- Tabella libri adottati dalla scuola -->
+            <div class="table-cart-container">
+                <div id="table-container">
+                    <table id="table-content">
+                        <thead id="table-header"></thead>
+                        <tbody id="table-data"></tbody>
+                    </table>    
+                </div>
+
+                <!-- Carrello -->
+                <div class="cart-container" id="cart">
+                    <div class="cart-content">
+                        <div class="cart-header">
+                            <h1>Carrello</h1>
+                            <hr>
+                        </div>
+                        <div class="cart-book-container" id="cart-book"></div>
+                        <div class="cart-button-container">
+                            <!-- <button id="close-cart-button" type="button" onclick="closeCart()">Chiudi</button> -->
+                            <button id="bottoneVendita" type="button" onsubmit="openSellerRegistration()">Vendi libri</button>
+                            <button id="bottoneRicevi" type="button" onclick="openBuyerRegistration()">Acquisisci libri</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- sezione froms -->
+                <div class="modal-overlay" id="modal-overlay"></div>
+                <div class="registration-form-container" id="registration-form">
+
+                <div class="left-search" id="left-search">
+                    <div class="title"><input type="cerca-nome-cliente" id="cliente-registrato" placeholder="SEARCH CLIENT"></div>
+                    <ul id="dropdown-clienti"></ul>
+                    <div class="buttons">
+                        
+                        <button id="seller-confirmButton">CONFERMA</button><!--creare funzione SaveClient-->
+                        <button id="seller-closeButton" onclick="closeBuyerRegistration()">ANNULLA</button><!--creare funzione che chiude tutto e torna alla home--> 
+                        <button id="new-client" onclick="open_closeNewSellerRegistration('left-new')">NUOVO CLIENTE</button>
+                    </div>
+                </div>
+        
+                
+                <!--registrazione nuovo venditore  -->
+                
+                <div class="left-new" id="left-new" style="display: none;">
+                    <form id = "seller-data">
+                        <div class="rowinput">
+                            <label for="nome">Nome:</label>
+                        <input type="text" id="seller-name-field" name="nome" required>
+                        </div>
+                        
+                    <div class="rowinput">
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" id="seller-surname-field" name="cognome" required>
+                        </div>
+                        
+                        <div class="rowinput">
+                            <label for="cellulare">Cellulare:</label>
+                            <input type="tel" id="seller-phoneNumber-field" name="cellulare" pattern="[0-9]{9}|[0-9]{10}|[0-9]{11}" required>
+                        </div>
+                               
+                    <div class="rowinput">
+                        <label for="cognome">Email:</label>
+                        <input type="email" id="seller-email-field" name="email" required>
+                        </div>
+
+                    <div class="buttons">
+                        <button id="seller-confirm1Button">CONFERMA</button><!--metti la tua funzione onsumbit-->
+                    </div>
+                    </form>
+                    <div class="buttons">
+                        <button id="seller-closeButton" onclick="open_closeNewSellerRegistration('left-search')">ANNULLA</button>                  
+                    </div>
+                </div>
+            </div>
+
+        <!-- Lista Acquirenti e Venditori -->
+        <div class="buyers-sellers">
+            <!-- Elenco Aquirenti -->
+            <h2>Venditori</h2>
+    <table id="sellers-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Email</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody id="sellers-content"></tbody>
+    </table>
+
+    <h2>Acquirenti</h2>
+    <table id="buyers-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Email</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody id="buyers-content"></tbody>
+    </table>
+            </div>
+        </div>
+        
+        <script src="index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/JsBarcode.all.min.js"></script>
+    </body>
+</html>     
