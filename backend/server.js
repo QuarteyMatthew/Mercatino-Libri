@@ -79,6 +79,32 @@ app.post('/api/clienti', (req, res) => {
 
   res.status(201).json({ messaggio: 'Cliente registrato con successo', cliente: nuovoCliente });
 });
+// ✅ ELIMINA UN CLIENTE E AGGIORNA I LIBRI ASSOCIATI
+app.delete('/api/clienti/:id', (req, res) => {
+  const id = req.params.id;
+  const db = leggiDB();
+
+  // Rimuovi il cliente dalla lista
+  const clientiFiltrati = db.clienti.filter(c => c.idCliente !== id);
+
+  // Aggiorna i libri: se il proprietario o acquirente è il cliente eliminato, azzera i riferimenti
+  db.libri = db.libri.map(libro => {
+    // Rimuovi proprietario se corrisponde
+    if (libro.proprietario && libro.proprietario.idCliente === id) {
+      libro.proprietario = { idCliente: "", saldo: 0 };
+    }
+    // Rimuovi acquirente se corrisponde
+    if (libro.acquirente && libro.acquirente.idCliente === id) {
+      libro.acquirente = { idCliente: "", saldo: 0 };
+    }
+    return libro;
+  });
+
+  db.clienti = clientiFiltrati;
+  scriviDB(db);
+
+  res.json({ messaggio: 'Cliente eliminato e libri aggiornati' });
+});
 
 // AVVIO SERVER
 app.listen(PORT, () => {

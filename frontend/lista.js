@@ -149,9 +149,13 @@ async function eliminaSelezionati() {
     }
     const id = selected.getAttribute("data-id");
     if (confirm("Sei sicuro di voler eliminare questo cliente?")) {
-        await fetch(`${API_URL}/api/clienti/${id}`, { method: "DELETE" });
-        await loadClienti(); // aggiorna la tabella
-        alert("Cliente eliminato con successo.");
+        const res = await fetch(`${API_URL}/api/clienti/${id}`, { method: "DELETE" });
+        if (res.ok) {
+            await loadClienti(); // aggiorna la tabella SOLO se eliminazione riuscita
+            alert("Cliente eliminato con successo.");
+        } else {
+            alert("Errore nell'eliminazione del cliente.");
+        }
     }
 }
 
