@@ -2,9 +2,9 @@
   "name": "libri-api",
   "version": "1.0.0",
   "description": "Gestione libri e clienti con JSON locale",
-  "main": "Backend/server.js",
+  "main": "backend/server.js",
   "scripts": {
-    "start":"node Backend/server.js"
+    "start":"node backend/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
