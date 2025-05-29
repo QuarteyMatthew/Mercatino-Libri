@@ -1,43 +1,39 @@
+// --- FIX Customer: idCliente univoco e opzionale ---
 class Customer {
     // Costruttore
-    constructor(name, surname, email, phoneNumb){
-        this.name = name
-        this.surname = surname
-        this.phoneNumb = phoneNumb
-        this.email = email
-        this.idCliente = ""
-        this.saldo = 0.0
+    constructor(name, surname, email, phoneNumb, idCliente = null) {
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumb = phoneNumb;
+        this.email = email;
+        this.idCliente = idCliente || Date.now().toString(); // ID UNIVOCO se non passato
+        this.saldo = 0.0;
     }
 
-    toString(){
-        return this.name+","+ this.surname+ "," + this.email + "," + this.phoneNumb + "," + this.saldo
+    toString() {
+        return this.name + "," + this.surname + "," + this.email + "," + this.phoneNumb + "," + this.saldo;
     }
 }
 
-
+// --- FIX Book: non creare Customer vuoti ---
 class Book {
     // Construttore
     constructor(properties) {
-       this.materia = properties[0];
-       this.codice = properties[1];
-       this.autore = properties[2];
-       this.titolo = properties[3];
-       this.proprietario = new Customer();     
-       this.acquirente = new Customer();
-       this.numeroSerie = "000";
-       this.prezzo = Number(properties[7]);
-       this.percentualeDiRivendita = 0.0;
-       this.id = ""
+        this.materia = properties[0];
+        this.codice = properties[1];
+        this.autore = properties[2];
+        this.titolo = properties[3];
+        this.proprietario = null; // sarà assegnato al momento giusto
+        this.acquirente = null;
+        this.numeroSerie = "000";
+        this.prezzo = Number(properties[7]);
+        this.percentualeDiRivendita = 0.0;
+        this.id = "";
     }
 
-    // set setPercentuale(percentualeDiRivendita) {
-    //     this.percentualeDiRivendita = percentualeDiRivendita;
-    // }
-
-    toString(){
-        return this.materia + ", " + this.autore  + ", "+ this.titolo + ", " + this.proprietario.idCliente + ", " + this.prezzo;
+    toString() {
+        return this.materia + ", " + this.autore + ", " + this.titolo + ", " + (this.proprietario ? this.proprietario.idCliente : "") + ", " + this.prezzo;
     }
-        
 }
 
 
@@ -478,12 +474,9 @@ async function receiveBooks(event) {
     var infoVenditori = [[]];
     event.preventDefault();
 
-    // Blocca la pagina
     blockPage();
 
     try {
-        let primaRiga = false;
-
         const name = document.forms["seller-data"]["seller-name-field"].value.trim();
         const surname = document.forms["seller-data"]["seller-surname-field"].value.trim();
         const email = document.forms["seller-data"]["seller-email-field"].value.trim();
@@ -502,32 +495,17 @@ async function receiveBooks(event) {
             return;
         }
 
+        // idCliente univoco
         const seller = new Customer(name, surname, email, phoneNumber);
-      
-        var trovato = false
-        var key = ""
-        while (trovato === false) {
-            if (parseInt(idCliente) < 10) {
-                key = "000" + idCliente;
-            } else if (idCliente < 100) {
-                key = "00" + idCliente;
-            } else if (idCliente < 1000) {
-                key = "0" + idCliente;
-            } else {
-                key = idCliente;
-            }
 
-            // Invia il nuovo cliente al server con idCliente
-            seller.idCliente = key;
-            await fetch(`${API_URL}/api/dati`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(seller)
-            });
-            trovato = true; // esci dal ciclo
-        }
+        // Salva il nuovo cliente sul server
+        await fetch(`${API_URL}/api/clienti`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(seller)
+        });
 
-        // Prova a generare e scaricare tutti i barcode
+        // Salva ogni libro con il nuovo proprietario
         let allBarcodesDownloaded = true;
         for (let i = 0; i < selectedBooks.length; i++) {
             let libroRegistrato = selectedBooks[i];
@@ -535,17 +513,17 @@ async function receiveBooks(event) {
             libroRegistrato.proprietario = seller;
             libroRegistrato.numeroSerie = libroRegistrato.numeroSerie;
             libroRegistrato.idLibro = libroRegistrato.id + libroRegistrato.numeroSerie;
-        
-            // Salva il libro sul server
-            await fetch('${API_URL}/api/dati', {
+
+            // Salva il libro sul server (route corretta!)
+            await fetch(`${API_URL}/api/libri`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(libroRegistrato)
             });
-        
+
             const datiBarcode = newBarcode(libroRegistrato.idLibro, seller.idCliente);
             try {
-                await downloadAndSaveImage(datiBarcode, key + ".jpg");
+                await downloadAndSaveImage(datiBarcode, seller.idCliente + ".jpg");
             } catch (err) {
                 allBarcodesDownloaded = false;
                 alert("Errore nel download del barcode per il libro: " + libroRegistrato.titolo);
@@ -558,11 +536,7 @@ async function receiveBooks(event) {
             return;
         }
 
-
-        // Aggiorna saldo e utenti
         updateUsers();
-
-        // Pulizia e reset
         clearCart();
         currentBalance = 0.0;
 
@@ -578,12 +552,9 @@ async function receiveBooks(event) {
         document.forms["seller-data"]["seller-email-field"].value = "";
         document.forms["seller-data"]["seller-phoneNumber-field"].value = "";
 
-       
-
     } catch (error) {
         alert("Si è verificato un errore durante la registrazione: " + error.message);
     } finally {
-        // Sblocca la pagina
         unBlockPage();
     }
     return infoVenditori;
@@ -774,13 +745,12 @@ async function confermaClienteEsistente(event) {
         return;
     }
 
-    // Per ogni libro selezionato, aggiorna il proprietario e salva sul server
     for (let i = 0; i < selectedBooks.length; i++) {
         let libro = selectedBooks[i];
         libro.proprietario = clienteAttivo;
         libro.idLibro = libro.id + libro.numeroSerie;
 
-        await fetch('${API_URL}/api/clienti', {
+        await fetch(`${API_URL}/api/libri`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(libro)

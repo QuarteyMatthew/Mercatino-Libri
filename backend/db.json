@@ -628,7 +628,7 @@
       "surname": "daldosso",
       "phoneNumb": "1234560987",
       "email": "ANDREADL93@GMAIL.COM",
-      "idCliente": "0000",
+      "idCliente": "0001",
       "saldo": 0
     },
     {
@@ -636,7 +636,7 @@
       "surname": "Tari",
       "phoneNumb": "1234556789",
       "email": "das34@bella.com",
-      "idCliente": "0000",
+      "idCliente": "0002",
       "saldo": 0
     },
     {
@@ -644,7 +644,7 @@
       "surname": "christian",
       "phoneNumb": "1234456678",
       "email": "mammadu@gmail.com",
-      "idCliente": "0000",
+      "idCliente": "0003",
       "saldo": 0
     }
   ]
