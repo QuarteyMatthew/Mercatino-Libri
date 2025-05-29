@@ -35,7 +35,8 @@ async function loadClienti() {
 
     const tbody = document.getElementById("movimenti-table-body");
     // --- Cambia qui: prendi i clienti dal server ---
-    const response = await fetch('http://localhost:3000/clienti');
+    const API_URL = "https://mercatino-libri.onrender.com";
+    const response = await fetch(`${API_URL}/api/clienti`);
     const clienti = await response.json();
 
     clienti.forEach(cliente => {
@@ -76,11 +77,11 @@ async function loadClienti() {
 }
 async function mostraMovimentiCliente(idCliente, tr) {
     // Prendi tutti i libri dal server
-    const respLibri = await fetch('http://localhost:3000/libri');
+    const respLibri = await fetch(`${API_URL}/api/libri`);
     const libri = await respLibri.json();
 
     // Prendi tutti i clienti (per mostrare i vecchi proprietari)
-    const respClienti = await fetch('http://localhost:3000/clienti');
+    const respClienti = await fetch(`${API_URL}/api/clienti`);
     const clienti = await respClienti.json();
 
     // Libri venduti da questo cliente

@@ -114,6 +114,8 @@ const selectedBooks = [];
 const users = []
 let currentBalance = 0.0;
 var idCliente = 0
+const API_URL = "https://mercatino-libri.onrender.com";
+
   
 // Funzione che carica i libri
 async function loadInitialData() {
@@ -517,7 +519,7 @@ async function receiveBooks(event) {
 
             // Invia il nuovo cliente al server con idCliente
             seller.idCliente = key;
-            await fetch('http://localhost:3000/clienti', {
+            await fetch(`${API_URL}/api/dati`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(seller)
@@ -535,7 +537,7 @@ async function receiveBooks(event) {
             libroRegistrato.idLibro = libroRegistrato.id + libroRegistrato.numeroSerie;
         
             // Salva il libro sul server
-            await fetch('http://localhost:3000/libri', {
+            await fetch('${API_URL}/api/dati', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(libroRegistrato)
@@ -617,7 +619,7 @@ async function releaseBooks(event) {
     buyer.idCliente = idAcquirente;
 
     // Salva l'acquirente sul server
-    await fetch('http://localhost:3000/clienti', {
+    await fetch('${API_URL}/api/clienti', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(buyer)
@@ -663,7 +665,7 @@ async function downloadAndSaveImage(imageUrl, fileName) {
 
 async function updateUsers() {
     users.length = 0; // Svuota l'array
-    const response = await fetch('http://localhost:3000/clienti');
+    const response = await fetch(`${API_URL}/api/clienti`);
     const clienti = await response.json();
     clienti.forEach(cliente => {
         users.push(cliente.name + " " + cliente.surname);
@@ -687,7 +689,7 @@ async function updateDropdown() {
                     input.value = nome;
                     dropdown.innerHTML = "";
                     // Trova il cliente selezionato dal server
-                    const response = await fetch('http://localhost:3000/clienti');
+                    const response = await fetch(`${API_URL}/api/clienti`);
                     const clienti = await response.json();
                     clienteAttivo = clienti.find(c => (c.name + " " + c.surname) === nome);
                 });
@@ -778,7 +780,7 @@ async function confermaClienteEsistente(event) {
         libro.proprietario = clienteAttivo;
         libro.idLibro = libro.id + libro.numeroSerie;
 
-        await fetch('http://localhost:3000/libri', {
+        await fetch('${API_URL}/api/clienti', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(libro)
