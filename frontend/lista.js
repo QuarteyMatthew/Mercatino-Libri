@@ -12,6 +12,9 @@ document.getElementById("page-container").innerHTML = `
     </form>
 </div>
 <div id="movimenti-table-container"></div>
+<div style="width:100%; display:flex; justify-content:flex-end; margin-top:10px;">
+    <button id="elimina-btn">Elimina selezionato</button>
+</div>
 `;
 
 // Funzione per caricare e mostrare i clienti da localStorage
@@ -50,13 +53,9 @@ async function loadClienti() {
             <td>${cliente.email}</td>
             <td>${cliente.phoneNumb}</td>
             <td>${cliente.saldo}</td>
-            <td><button class="elimina-singolo-btn" data-id="${cliente.idCliente}">Elimina</button></td>
         `;
     
         tr.addEventListener("click", async function(e) {
-            // Evita che il click sul bottone elimina apra/chiuda la tendina
-            if (e.target.classList.contains("elimina-singolo-btn")) return;
-    
             // Se già selezionato, chiudi la tendina
             if (tr.classList.contains("selected")) {
                 tr.classList.remove("selected");
@@ -73,7 +72,24 @@ async function loadClienti() {
         tbody.appendChild(tr);
     });
 
-    document.getElementById("elimina-btn").addEventListener("click", eliminaSelezionati);
+    async function eliminaSelezionati() {
+        const selected = document.querySelector(".cliente-row.selected");
+        if (!selected) {
+            alert("Seleziona una riga da eliminare.");
+            return;
+        }
+        const id = selected.getAttribute("data-id");
+        const API_URL = "https://mercatino-libri.onrender.com";
+        if (confirm("Sei sicuro di voler eliminare questo cliente?")) {
+            await fetch(`${API_URL}/api/clienti/${id}`, { method: "DELETE" });
+            // Aggiorna la tabella dopo l'eliminazione
+            await loadClienti();
+            alert("Cliente eliminato con successo.");
+        }
+    }
+    
+    // Dopo aver creato la tabella in loadClienti, collega il bottone:
+    document.getElementById("elimina-btn").onclick = eliminaSelezionati;
 }
 async function mostraMovimentiCliente(idCliente, tr) {
     // Prendi tutti i libri dal server

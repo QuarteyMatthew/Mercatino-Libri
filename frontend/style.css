@@ -225,3 +225,11 @@ button {
     background: #e8fbe8;
     border-top: 2px solid #4CAF50;
 }
+#elimina-btn {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 20px;
+}
+#elimina-btn:hover {
+    background-color: #4CAF50;
+}
