@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const pool = new Pool({
-  connectionString: process.env.SUPABASE_DB_URL,
+  connectionString: 'postgresql://postgres:MercatinoDelLibro2025@aws-0-eu-west-3.pooler.supabase.com:6543/postgres',
   ssl: { rejectUnauthorized: false }
 });
 
